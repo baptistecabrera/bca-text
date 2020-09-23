@@ -5,9 +5,9 @@
 
 ## Description
 
-_Bca.Text_ is a PowerShell module used to interract with DAC package.
+_Bca.Text_ is a PowerShell module used to format text to be used for more user-friendly outputs.
 
-It can be used to deploy and undeploy DACPAC.
+It contains functions to show different pre-defined message types (error, warning, ...), customize your messages, questions requiring user inputs (with or without defined choices), aligning strings on the console, and to colorize text from RGB or Hex color values (instead or just having `ConsoleColor` as an option).
 
 ## Disclaimer
 
@@ -18,6 +18,10 @@ It can be used to deploy and undeploy DACPAC.
 ## Dependencies
 
 - _(none)_
+
+## Examples
+
+![Demo](img/demo.png)
 
 ## Documentation
 Find extended documentation [at this page](doc/ReadMe.md).

@@ -28,7 +28,7 @@ An integer specifying the width to fit to.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|$Host.UI.RawUI.MaxWindowSize.Width - $Host.UI.RawUI.CursorPosition.X|
+|Default value:|`$Host.UI.RawUI.MaxWindowSize.Width - $Host.UI.RawUI.CursorPosition.X`|
 |Position:|1|
 |Required:|False|
 |Accepts pipepline input:|False|
@@ -39,7 +39,7 @@ An integer specifying the left padding of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Position:|2|
 |Required:|False|
 |Accepts pipepline input:|False|
@@ -50,7 +50,7 @@ An integer specifying the right padding of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Position:|3|
 |Required:|False|
 |Accepts pipepline input:|False|
@@ -69,11 +69,14 @@ An integer specifying the right padding of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Position:|5|
 |Required:|False|
 |Accepts pipepline input:|False|
 
+### `-<CommonParameters>`
+This command supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 ## Inputs
 **System.String**
 

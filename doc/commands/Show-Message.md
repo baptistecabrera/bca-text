@@ -67,7 +67,7 @@ A color to display the message text.
 | | |
 |:-|:-|
 |Type:|Object|
-|Default value:|$Host.UI.RawUI.ForegroundColor|
+|Default value:|`$Host.UI.RawUI.ForegroundColor`|
 |Parameter sets:|FromColor|
 |Position:|Named|
 |Required:|False|
@@ -78,7 +78,7 @@ A color to display the message text.
 | | |
 |:-|:-|
 |Type:|String|
-|Default value:|~|
+|Default value:|`~`|
 |Parameter sets:|FromColor|
 |Position:|Named|
 |Required:|False|
@@ -102,7 +102,7 @@ An integer specifying the width of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|$Host.UI.RawUI.MaxWindowSize.Width - $Host.UI.RawUI.CursorPosition.X|
+|Default value:|`$Host.UI.RawUI.MaxWindowSize.Width - $Host.UI.RawUI.CursorPosition.X`|
 |Parameter sets:|FromColor, FromType|
 |Position:|Named|
 |Required:|False|
@@ -114,7 +114,7 @@ An integer specifying the left padding of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Parameter sets:|FromColor, FromType|
 |Position:|Named|
 |Required:|False|
@@ -126,7 +126,7 @@ An integer specifying the right padding of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Parameter sets:|FromColor, FromType|
 |Position:|Named|
 |Required:|False|
@@ -142,6 +142,9 @@ An integer specifying the right padding of the message.
 |Required:|False|
 |Accepts pipepline input:|False|
 
+### `-<CommonParameters>`
+This command supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 ## Related Links
 - [Write-HostRgb](Write-HostRgb.md)
 - [Show-Information](Show-Information.md)

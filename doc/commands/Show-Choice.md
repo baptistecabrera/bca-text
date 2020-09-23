@@ -34,7 +34,7 @@ An integer containing the index of the default choice.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|-1|
+|Default value:|`-1`|
 |Position:|1|
 |Required:|False|
 |Accepts pipepline input:|False|
@@ -55,7 +55,7 @@ An integer specifying the width of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Position:|3|
 |Required:|False|
 |Accepts pipepline input:|False|
@@ -66,7 +66,7 @@ An integer specifying the left padding of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Position:|4|
 |Required:|False|
 |Accepts pipepline input:|False|
@@ -77,11 +77,14 @@ An integer specifying the right padding of the message.
 | | |
 |:-|:-|
 |Type:|Int32|
-|Default value:|0|
+|Default value:|`0`|
 |Position:|5|
 |Required:|False|
 |Accepts pipepline input:|False|
 
+### `-<CommonParameters>`
+This command supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 ## Outputs
 **System.Int32**
 
