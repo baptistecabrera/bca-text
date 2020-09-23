@@ -78,10 +78,12 @@ An integer specifying the right padding of the message.
 This command supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
 For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 ## Inputs
+
 **System.String**
 
 You can pipe a value for the string to this cmdlet.
 ## Outputs
+
 **System.String[]**
 
 Returns a String array containing the split strings.

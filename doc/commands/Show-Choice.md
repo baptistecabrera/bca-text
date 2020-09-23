@@ -86,6 +86,7 @@ An integer specifying the right padding of the message.
 This command supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
 For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 ## Outputs
+
 **System.Int32**
 
 Returns an integer containing the index of the choice selected.
