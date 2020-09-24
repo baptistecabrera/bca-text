@@ -7,6 +7,8 @@ function Show-Question
             Shows a question message to the console.
         .PARAMETER Question
             A string containing the question to show.
+        .PARAMETER Prompt
+            A string containing the prompt to show.
         .PARAMETER Choice
             A string array containing the possible choices.
             If not choice is specified, the answer will be user input.
@@ -23,7 +25,6 @@ function Show-Question
         .OUTPUTS
             System.Int32
             Returns an integer containing the index of the choice selected if choices are provided.
-
         .OUTPUTS
             System.String
             Returns a string containing the the user's answer if no choices are provided.
@@ -51,6 +52,8 @@ function Show-Question
         [ValidateNotNullOrEmpty()]
         [string] $Question,
         [Parameter(Mandatory = $false)]
+        [string] $Prompt,
+        [Parameter(Mandatory = $false)]
         [string[]] $Choice,
         [Parameter(Mandatory = $false)]
         [string] $Help = "",
@@ -65,6 +68,10 @@ function Show-Question
     )
     
     Show-Message -Message $Question -Type Question -Width $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight
-    if ($Choice) { Show-Choice -Choice $Choice -Width $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight -Default $Default -Help $Help }
-    else { Read-Host -Prompt (Format-String -String $script:LocalizedData.Choice.YourAnswer -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight) }
+    if ($Choice) { Show-Choice -Choice $Choice -Prompt $Prompt -Width $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight -Default $Default -Help $Help }
+    else
+    { 
+        if (!$Prompt) { $Prompt = $script:LocalizedData.Choice.YourAnswer }
+        Read-Host -Prompt (Format-String -String $Prompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight)
+    }
 }

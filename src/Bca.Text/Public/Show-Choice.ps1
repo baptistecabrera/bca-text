@@ -7,6 +7,8 @@ function Show-Choice
             Shows choices to the console and returns the answer.
         .PARAMETER Choice
             A string array containing the possible choices.
+        .PARAMETER Prompt
+            A string containing the prompt to show.
         .PARAMETER Help
             A string containing a help message.
         .PARAMETER Default
@@ -38,6 +40,8 @@ function Show-Choice
         [ValidateNotNullOrEmpty()]
         [string[]] $Choice,
         [Parameter(Mandatory = $false)]
+        [string] $Prompt,
+        [Parameter(Mandatory = $false)]
         [int] $Default = -1,
         [Parameter(Mandatory = $false)]
         [string] $Help = "",
@@ -54,6 +58,7 @@ function Show-Choice
     $PSBoundParameters.Add("PrimaryColor", $Host.UI.RawUI.BackgroundColor)
     $PSBoundParameters.Add("SecondaryColor", $Host.UI.RawUI.BackgroundColor)
     $PSBoundParameters.Remove("Choice") | Out-Null
+    $PSBoundParameters.Remove("Prompt") | Out-Null
     $PSBoundParameters.Remove("Default") | Out-Null
     $PSBoundParameters.Remove("Help") | Out-Null
     $Answer = " "
@@ -74,9 +79,10 @@ function Show-Choice
     Write-Host " "
     while (($Answer -eq "?") -or ($Answer -notmatch "^[\d\.]+$") -or (($Answer -as [int]) -lt 1) -or (($Answer -as [int]) -gt ($Choice.Count)))
     {
-        $Prompt = Format-String -String $script:LocalizedData.Choice.YourAnswer -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight
-        if ($Default -ge 0) { $Prompt += ($script:LocalizedData.Choice.Default -f ($Default + 1)) }
-        $Answer = Read-Host -Prompt $Prompt
+        if (!$Prompt) { $Prompt = $script:LocalizedData.Choice.YourAnswer }
+        $DisplayPrompt = Format-String -String $Prompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight
+        if ($Default -ge 0) { $DisplayPrompt += " " + ($script:LocalizedData.Choice.Default -f ($Default + 1)) }
+        $Answer = Read-Host -Prompt $DisplayPrompt
         if (!$Answer -and ($Default -ge 0)) { $Answer = $Default + 1 }
         if (($Answer -eq "?") -and $Help)
         {
