@@ -65,7 +65,7 @@ Describe $global:TestLocalizedData.Message.Describe {
     }
 }
 
-Describe $global:TestLocalizedData.Question.Describe {
+Describe $global:TestLocalizedData.Question.Describe -Tags "SkipAutomated" {
         
     It $global:TestLocalizedData.Question.QuestionChoice {
         Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { return "1" }
