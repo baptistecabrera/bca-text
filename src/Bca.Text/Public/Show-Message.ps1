@@ -105,7 +105,7 @@ function Show-Message
                 G = 23;
                 B = 152
             }
-            $MessageMarker = '!'
+            $MessageMarker = '?'
         }
         "Success"
         {
