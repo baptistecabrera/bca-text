@@ -13,6 +13,7 @@ It contains functions to show different pre-defined message types (error, warnin
 
 - _Bca.Text_ has been created to answer my needs, but I provide it to people who may need such a tool.
 - It may contain bugs or lack some features, in this case, feel free to open an issue, and I'll manage it as best as I can.
+- Some feature are not yest cross-platform.
 - This _GitHub_ repository is not the primary one, but you are welcome to contribute, see transparency for more information.
 
 ## Dependencies

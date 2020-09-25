@@ -21,11 +21,11 @@ This example will test the color with value "Red".
 ### `-Color`
 An object representing the color.
 This can be
-    - a ConsoleColor,
-    - a String with the name of the ConsoleColor,
-    - a String containing the hexadecimal color (with or without '#'),
-    - an Hashtable or PSCustomObject containing R, G and B members,
-    - an Integer array containing the values for R, G and B (in this order).
+  - a ConsoleColor,
+  - a String with the name of the ConsoleColor,
+  - a String containing the hexadecimal color (with or without '#'),
+  - an Hashtable or PSCustomObject containing R, G and B members,
+  - an Integer array containing the values for R, G and B (in this order).
 
 | | |
 |:-|:-|
@@ -59,5 +59,7 @@ You can pipe a value for the color to this cmdlet.
 **System.Boolean**
 
 Returns a Boolean describing if the color is correct or not
+## Notes
+Arrays can not be piped to this function as they will be unwraped.
 ## Related Links
 - [ConvertTo-Color](ConvertTo-Color.md)

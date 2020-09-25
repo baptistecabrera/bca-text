@@ -1,9 +1,9 @@
 # Bca.Text `0.1.0`
-Tags: `format` `text`
+Tags: `format` `Linux` `MacOS` `text` `Windows`
 
 Minimum PowerShell version: `5.1`
 
-Module to format and display text and messages.
+Powershell module to format text and display messages with custom colors.
 
 ## Commands
 - [ConvertTo-Color](commands/ConvertTo-Color.md)
@@ -21,7 +21,12 @@ Module to format and display text and messages.
 - [Write-HostRgb](commands/Write-HostRgb.md)
 
 ## Release Notes
-0.0.1:
-- First version
+0.1.0:
+- First version supports:
+  - Show message, information, success, warning, error, question (with or without choices, supporting default choice and help) and unspecified;
+  - Format string (left, right and center align);
+  - Split string on multiple lines;
+  - Convert and test colors;
+  - Write on host using custom colors (as opposed to only supporting ConsoleColor).
 ---
 [Bca.Text](https://github.com/baptistecabrera/bca-text)

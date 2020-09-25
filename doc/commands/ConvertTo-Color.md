@@ -54,5 +54,7 @@ You can pipe a value for the color to this cmdlet.
 **System.String**
 
 You can pipe a value for the color to this cmdlet.
+## Notes
+Arrays can not be piped to this function as they will be unwraped.
 ## Related Links
 - [Test-Color](Test-Color.md)

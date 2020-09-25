@@ -9,7 +9,7 @@ Shows a question message.
 Shows a question message to the console.
 ## Syntax
 ```powershell
-Show-Question [-Question] <string> [[-Choice] <string[]>] [[-Help] <string>] [[-Width] <int>] [[-Default] <int>] [[-PaddingLeft] <int>] [[-PaddingRight] <int>] [<CommonParameters>]
+Show-Question [-Question] <string> [[-Prompt] <string>] [[-Choice] <string[]>] [[-Help] <string>] [[-Width] <int>] [[-Default] <int>] [[-PaddingLeft] <int>] [[-PaddingRight] <int>] [<CommonParameters>]
 ```
 ## Examples
 ### Example 1
@@ -33,6 +33,16 @@ A string containing the question to show.
 |Required:|True|
 |Accepts pipepline input:|False|
 
+### `-Prompt`
+A string containing the prompt to show.
+
+| | |
+|:-|:-|
+|Type:|String|
+|Position:|1|
+|Required:|False|
+|Accepts pipepline input:|False|
+
 ### `-Choice`
 A string array containing the possible choices.
 If not choice is specified, the answer will be user input.
@@ -40,7 +50,7 @@ If not choice is specified, the answer will be user input.
 | | |
 |:-|:-|
 |Type:|String[]|
-|Position:|1|
+|Position:|2|
 |Required:|False|
 |Accepts pipepline input:|False|
 
@@ -50,7 +60,7 @@ A string containing a help message.
 | | |
 |:-|:-|
 |Type:|String|
-|Position:|2|
+|Position:|3|
 |Required:|False|
 |Accepts pipepline input:|False|
 
@@ -61,7 +71,7 @@ An integer specifying the width of the message.
 |:-|:-|
 |Type:|Int32|
 |Default value:|`$Host.UI.RawUI.MaxWindowSize.Width - $Host.UI.RawUI.CursorPosition.X`|
-|Position:|3|
+|Position:|4|
 |Required:|False|
 |Accepts pipepline input:|False|
 
@@ -72,7 +82,7 @@ An integer containing the index of the default choice.
 |:-|:-|
 |Type:|Int32|
 |Default value:|`-1`|
-|Position:|4|
+|Position:|5|
 |Required:|False|
 |Accepts pipepline input:|False|
 
@@ -83,7 +93,7 @@ An integer specifying the left padding of the message.
 |:-|:-|
 |Type:|Int32|
 |Default value:|`0`|
-|Position:|5|
+|Position:|6|
 |Required:|False|
 |Accepts pipepline input:|False|
 
@@ -94,7 +104,7 @@ An integer specifying the right padding of the message.
 |:-|:-|
 |Type:|Int32|
 |Default value:|`0`|
-|Position:|6|
+|Position:|7|
 |Required:|False|
 |Accepts pipepline input:|False|
 

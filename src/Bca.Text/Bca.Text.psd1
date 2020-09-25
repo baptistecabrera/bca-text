@@ -23,7 +23,7 @@
     Copyright         = '(c) 2020 Bca. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'Module to format and display text and messages.'
+    Description       = 'Powershell module to format text and display messages with custom colors.'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '5.1'
@@ -85,23 +85,38 @@
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData       = @{
 
-        PSData = @{
+        License          = "MIT"
+
+        repositoryUrl    = "https://github.com/baptistecabrera/bca-text.git"
+
+        docsUrl          = "https://github.com/baptistecabrera/bca-text/tree/master/doc"
+        mailingListUrl   = "https://github.com/baptistecabrera/bca-text/issues"
+        bugTrackerUrl    = "https://github.com/baptistecabrera/bca-text/issues"
+        packageSourceUrl = "https://github.com/baptistecabrera/bca-text/tree/master/src"
+        projectSourceUrl = "https://github.com/baptistecabrera/bca-text/tree/master/src"
+
+        PSData           = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('text', 'format')
+            Tags         = @('text', 'format', "Windows", "Linux", "MacOS")
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri   = 'https://github.com/baptistecabrera/bca-text/blob/master/LICENSE'
 
             # A URL to the main website for this project.
             ProjectUri   = 'https://github.com/baptistecabrera/bca-text'
 
             # A URL to an icon representing this module.
-            # IconUri = ''
+            IconUri      = 'https://www.powershellgallery.com/Content/Images/Branding/packageDefaultIcon.png'
 
             # ReleaseNotes of this module
-            ReleaseNotes = '0.0.1:
-- First version'
+            ReleaseNotes = '0.1.0:
+- First version supports:
+  - Show message, information, success, warning, error, question (with or without choices, supporting default choice and help) and unspecified;
+  - Format string (left, right and center align);
+  - Split string on multiple lines;
+  - Convert and test colors;
+  - Write on host using custom colors (as opposed to only supporting ConsoleColor).'
         } # End of PSData hashtable
 
     } # End of PrivateData hashtable
