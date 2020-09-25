@@ -23,11 +23,17 @@ function Show-Choice
             System.Int32
             Returns an integer containing the index of the choice selected.
         .EXAMPLE
-            Show-Choice  -Choice @( "Yes", "No" )
+            Show-Choice -Choice @( "Yes", "No" )
 
             Description
             -----------
             This example will show the choices and returns the choice selected.
+        .EXAMPLE
+            Show-Choice -Choice @( "Yes", "No" ) -Default 0 -Prompt "Your answer"
+
+            Description
+            -----------
+            This example will show the choices with default being "Yes" and prompt "Your answer", and returns the choice selected.
         .NOTES
         .LINK
             Show-Message
@@ -80,9 +86,10 @@ function Show-Choice
     while (($Answer -eq "?") -or ($Answer -notmatch "^[\d\.]+$") -or (($Answer -as [int]) -lt 1) -or (($Answer -as [int]) -gt ($Choice.Count)))
     {
         if (!$Prompt) { $Prompt = $script:LocalizedData.Choice.YourAnswer }
-        $DisplayPrompt = Format-String -String $Prompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight
+        # $DisplayPrompt = Format-String -String $Prompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight
+        $DisplayPrompt = $Prompt
         if ($Default -ge 0) { $DisplayPrompt += " " + ($script:LocalizedData.Choice.Default -f ($Default + 1)) }
-        $Answer = Read-Host -Prompt $DisplayPrompt
+        $Answer = Read-Host -Prompt (Format-String -String $DisplayPrompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight)
         if (!$Answer -and ($Default -ge 0)) { $Answer = $Default + 1 }
         if (($Answer -eq "?") -and $Help)
         {

@@ -9,7 +9,7 @@
     ImportModule = @{
         Error = @{
             ImportError = @{
-                Message = "Impossible d'importer la fonction « {0} »  : {1}"
+                Message = "Impossible d'importer la fonction « {0} » : {1}"
                 Target  = "Fonction"
             }
         }
@@ -19,5 +19,6 @@
         YourAnswer = "Votre réponse"
         Default    = "(le défaut est « {0} »)"
         Help       = "Aide"
+        TypeHelp   = "(entrer ""{0}"" pour l'aide)"
     }
 }

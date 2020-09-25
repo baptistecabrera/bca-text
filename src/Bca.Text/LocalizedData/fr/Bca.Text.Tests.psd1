@@ -18,15 +18,16 @@
     }
     
     ConvertTest = @{
-        Describe    = "ConvertTo-Color/Test-Color"
-        Color       = "Depuis ConsoleColor"
-        String      = "Depuis String"
-        Hex         = "Depuis Hexadecimal"
-        Hex2        = "Depuis Hexadecimal sans « # »"
-        Hash        = "Depuis Hashtable"
-        Object      = "Depuis Object"
-        IntArray    = "Depuis Int array"
-        StringArray = "Depuis String array"
+        DescribeConvert = "ConvertTo-Color"
+        DescribeTest    = "Test-Color"
+        Color           = "Depuis ConsoleColor"
+        String          = "Depuis String"
+        Hex             = "Depuis Hexadecimal"
+        Hex2            = "Depuis Hexadecimal sans « # »"
+        Hash            = "Depuis Hashtable"
+        Object          = "Depuis Object"
+        IntArray        = "Depuis Int array"
+        StringArray     = "Depuis String array"
     }
 
     Format      = @{

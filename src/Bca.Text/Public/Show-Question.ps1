@@ -71,7 +71,22 @@ function Show-Question
     if ($Choice) { Show-Choice -Choice $Choice -Prompt $Prompt -Width $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight -Default $Default -Help $Help }
     else
     { 
+        $Answer = " "
         if (!$Prompt) { $Prompt = $script:LocalizedData.Choice.YourAnswer }
-        Read-Host -Prompt (Format-String -String $Prompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight)
+        if ($Help)
+        {
+            $DisplayPrompt = "{0} {1}" -f $Prompt, ($script:LocalizedData.Choice.TypeHelp -f "?")
+            while (($Answer -eq "?") -or ($Answer -eq " "))
+            {
+                $Answer = Read-Host -Prompt (Format-String -String $DisplayPrompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight)
+                if (($Answer -eq "?") -and $Help)
+                {
+                    Show-Information -Message $Help -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight
+                    $Answer = " "
+                }
+            }
+        }
+        else { $Answer = Read-Host -Prompt (Format-String -String $Prompt -Widt $Width -PaddingLeft $PaddingLeft -PaddingRight $PaddingRight) }
+        $Answer
     }
 }

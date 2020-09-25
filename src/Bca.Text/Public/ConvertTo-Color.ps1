@@ -32,6 +32,7 @@ function ConvertTo-Color
             -----------
             This example will test the color with value "Red".
         .NOTES
+            Arrays can not be piped to this function as they will be unwraped.
         .LINK
             Test-Color
     #>

@@ -19,5 +19,6 @@
         YourAnswer = "Your answer"
         Default    = "(default is ""{0}"")"
         Help       = "Help"
+        TypeHelp   = "(type ""{0}"" for help)"
     }
 }

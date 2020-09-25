@@ -8,11 +8,11 @@ function Test-Color
         .PARAMETER Color
             An object representing the color.
             This can be
-                - a ConsoleColor,
-                - a String with the name of the ConsoleColor,
-                - a String containing the hexadecimal color (with or without '#'),
-                - an Hashtable or PSCustomObject containing R, G and B members,
-                - an Integer array containing the values for R, G and B (in this order).
+              - a ConsoleColor,
+              - a String with the name of the ConsoleColor,
+              - a String containing the hexadecimal color (with or without '#'),
+              - an Hashtable or PSCustomObject containing R, G and B members,
+              - an Integer array containing the values for R, G and B (in this order).
         .INPUTS
             System.Management.Automation.PSCustomObject
             You can pipe a value for the color to this cmdlet.
@@ -35,6 +35,7 @@ function Test-Color
             -----------
             This example will test the color with value "Red".
         .NOTES
+            Arrays can not be piped to this function as they will be unwraped.
         .LINK
             ConvertTo-Color
     #>

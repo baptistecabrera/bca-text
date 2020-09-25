@@ -63,26 +63,26 @@ Describe $global:TestLocalizedData.Message.Describe {
         catch { $Result = $false }
         $Result | Should -Be $true
     }
-}
+    
+    Context $global:TestLocalizedData.Message.QuestionChoice.Context {
 
-Describe $global:TestLocalizedData.Question.Describe -Tags "SkipAutomated" {
-        
-    It $global:TestLocalizedData.Question.QuestionChoice {
-        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { return "1" }
-        try
-        {
-            $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Prompt "Answer"
-            $Result = $true
+        Mock -CommandName "Read-Host" -ModuleName "Bca.Text" -MockWith {
+            return "0"
+        } -ParameterFilter { $Prompt -eq ($global:LocalizedData.Choice.YourAnswer + ($global:LocalizedData.Choice.Default -f "0")) }
+
+        It $global:TestLocalizedData.Message.QuestionChoice.Test {
+            try
+            {
+                $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0
+                $Result = $true
+            }
+            catch { $Result = $false }
+            $Result | Should -Be $true
+            $Answer | Should -BeExactly 0
         }
-        catch { $Result = $false }
-        $Result | Should -Be $true
-        $Answer | Should -BeExactly "0"
-    }
 
-    It $global:TestLocalizedData.Question.QuestionDefaultChoice {
-        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { return "" }
-        try
-        {
+    }
+}       {
             $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0 -PaddingLeft 2 -PaddingRight 1 -Help "This is a helpful message"
             $Result = $true
         }
@@ -104,7 +104,7 @@ Describe $global:TestLocalizedData.Question.Describe -Tags "SkipAutomated" {
     }
 }
 
-Describe $global:TestLocalizedData.ConvertTest.Describe {
+Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
 
     BeforeAll {
         $Color = [system.ConsoleColor]::Red
@@ -199,7 +199,7 @@ Describe $global:TestLocalizedData.ConvertTest.Describe {
     }
 }
 
-Describe $global:TestLocalizedData.ConvertTest.Describe {
+Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
 
     BeforeAll {
         $Color = "toto"
@@ -311,6 +311,198 @@ Describe $global:TestLocalizedData.ConvertTest.Describe {
             $Result = $true
         }
         catch { $Result = $false }
+        $Result | Should -Be $false
+    }
+}
+
+Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
+
+    BeforeAll {
+        $Color = [system.ConsoleColor]::Red
+        $String = "Red"
+        $Hex = "#ff0000"
+        $Hex2 = "ff0000"
+        $Hash = @{ R = 1; G = 2; B = 3 }
+        $Object = New-Object -TypeName PsObject -Property $Hash
+        $IntArray = @( 125, 123, 124 )
+        $StringArray = @( "125", "123", "124" )
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Color {
+        try
+        {
+            $Result = $Color | Test-Color
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+
+    It $global:TestLocalizedData.ConvertTest.String {
+        try
+        {
+            $Result = $String | Test-Color
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Hex {
+        try
+        {
+            $Result = $Hex | Test-Color
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Hex2 {
+        try
+        {
+            $Result = $Hex2 | Test-Color
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Hash {
+        try
+        {
+            $Result = $Hash | Test-Color
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Object {
+        try
+        {
+            $Result = $Object | Test-Color
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+
+    It $global:TestLocalizedData.ConvertTest.IntArray {
+        try
+        {
+            $Result = Test-Color -Color $IntArray
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+
+    It $global:TestLocalizedData.ConvertTest.StringArray {
+        try
+        {
+            $Result = Test-Color -Color $StringArray
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+    }
+}
+
+Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
+
+    BeforeAll {
+        $Color = "toto"
+        $String = "plop"
+        $Hex = "#ffzz00"
+        $Hex2 = "ffzz00"
+        $Hash = @{ R = 260; G = 2; B = 3 }
+        $Hash2 = @{ G = 2; B = 3 }
+        $Object = New-Object -TypeName PsObject -Property $Hash
+        $Object2 = New-Object -TypeName PsObject -Property $Hash2
+        $IntArray = @( 300, 123, 124 )
+        $StringArray = @( "125", "300", "124" )
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Color {
+        try
+        {
+            $Result = $Color | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.String {
+        try
+        {
+            $Result = $String | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Hex {
+        try
+        {
+            $Result = $Hex | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Hex2 {
+        try
+        {
+            $Result = $Hex2 | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Hash {
+        try
+        {
+            $Result = $Hash | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Hash {
+        try
+        {
+            $Result = $Hash2 | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Object {
+        try
+        {
+            $Result = $Object | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Object {
+        try
+        {
+            $Result = $Object2 | Test-Color -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.IntArray {
+        try
+        {
+            $Result = Test-Color -Color $IntArray -ErrorActionStop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.StringArray {
+        try
+        {
+            $Result = Test-Color -Color $StringArray -ErrorActionStop
+        }
+        catch { $Result = $true }
         $Result | Should -Be $false
     }
 }
