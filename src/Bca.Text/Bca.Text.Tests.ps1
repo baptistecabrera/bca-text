@@ -4,12 +4,6 @@ if (Test-Path (Join-Path $PSScriptRoot LocalizedData))
     if (!$?) { $global:TestLocalizedData = Import-LocalizedData -UICulture en-US -BaseDirectory (Join-Path $PSScriptRoot LocalizedData) }
 }
 
-if (Test-Path (Join-Path $PSScriptRoot LocalizedData))
-{
-    $script:LocalizedData = Import-LocalizedData -BaseDirectory (Join-Path $PSScriptRoot LocalizedData) -ErrorAction SilentlyContinue
-    if (!$?) { $script:LocalizedData = Import-LocalizedData -UICulture en-US -BaseDirectory (Join-Path $PSScriptRoot LocalizedData) }
-}
-
 Describe $global:TestLocalizedData.Module.Describe {
     BeforeAll {
         $ParentDirectory = Split-Path $PSScriptRoot -Parent
@@ -35,7 +29,7 @@ Describe $global:TestLocalizedData.Module.Describe {
     }
 }
 
-Describe $global:TestLocalizedData.Message.Describe {
+Describe $global:TestLocalizedData.Message.Describe -Tags "WindowsOnly" {
 
     It $global:TestLocalizedData.Message.Tests {
         try
@@ -63,26 +57,26 @@ Describe $global:TestLocalizedData.Message.Describe {
         catch { $Result = $false }
         $Result | Should -Be $true
     }
-    
-    Context $global:TestLocalizedData.Message.QuestionChoice.Context {
+}
 
-        Mock -CommandName "Read-Host" -ModuleName "Bca.Text" -MockWith {
-            return "0"
-        } -ParameterFilter { $Prompt -eq ($global:LocalizedData.Choice.YourAnswer + ($global:LocalizedData.Choice.Default -f "0")) }
-
-        It $global:TestLocalizedData.Message.QuestionChoice.Test {
-            try
-            {
-                $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0
-                $Result = $true
-            }
-            catch { $Result = $false }
-            $Result | Should -Be $true
-            $Answer | Should -BeExactly 0
+Describe $global:TestLocalizedData.Question.Describe -Tags "WindowsOnly" {
+        
+    It $global:TestLocalizedData.Question.QuestionChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { return "1" }
+        try
+        {
+            $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Prompt "Answer"
+            $Result = $true
         }
-
+        catch { $Result = $false }
+        $Result | Should -Be $true
+        $Answer | Should -BeExactly "0"
     }
-}       {
+
+    It $global:TestLocalizedData.Question.QuestionDefaultChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { return "" }
+        try
+        {
             $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0 -PaddingLeft 2 -PaddingRight 1 -Help "This is a helpful message"
             $Result = $true
         }
@@ -558,10 +552,5 @@ Describe $global:TestLocalizedData.Format.Describe {
         catch { $Result = $false }
         $Result | Should -Be $true
         $String | Should -BeExactly "  $CenterString  "
-    }
-
-    It "Fails" {
-        $result = $false
-        $Result | Should -Be $true
     }
 }
