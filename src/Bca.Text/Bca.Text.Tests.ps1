@@ -74,7 +74,43 @@ Describe $global:TestLocalizedData.Question.Describe -Tags "WindowsOnly" {
     }
 
     It $global:TestLocalizedData.Question.QuestionDefaultChoice {
-        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { return "" }
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { "" }
+        try
+        {
+            $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0 -PaddingLeft 2 -PaddingRight 1 -Help "This is a helpful message"
+            $Result = $true
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+        $Answer | Should -BeExactly "0"
+    }
+
+    It $global:TestLocalizedData.Question.QuestionDefaultChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { Get-Random @("", "?") }
+        try
+        {
+            $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0 -PaddingLeft 2 -PaddingRight 1 -Help "This is a helpful message"
+            $Result = $true
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+        $Answer | Should -BeExactly "0"
+    }
+
+    It $global:TestLocalizedData.Question.QuestionDefaultChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { Get-Random @("", "?") }
+        try
+        {
+            $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0 -PaddingLeft 2 -PaddingRight 1 -Help "This is a helpful message"
+            $Result = $true
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+        $Answer | Should -BeExactly "0"
+    }
+
+    It $global:TestLocalizedData.Question.QuestionDefaultChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { Get-Random @("", "?") }
         try
         {
             $Answer = Show-Question -Question "Are you sure?" -Choice @("Yes", "No") -Default 0 -PaddingLeft 2 -PaddingRight 1 -Help "This is a helpful message"
@@ -90,6 +126,42 @@ Describe $global:TestLocalizedData.Question.Describe -Tags "WindowsOnly" {
         try
         {
             $Answer = Show-Question -Question "Question?"
+            $Result = $true
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+        $Answer | Should -BeExactly "answer"
+    }
+
+    It $global:TestLocalizedData.Question.QuestionNoChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { Get-Random @("answer", "?") }
+        try
+        {
+            $Answer = Show-Question -Question "Question?" -Help "Help"
+            $Result = $true
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+        $Answer | Should -BeExactly "answer"
+    }
+
+    It $global:TestLocalizedData.Question.QuestionNoChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { Get-Random @("answer", "?") }
+        try
+        {
+            $Answer = Show-Question -Question "Question?" -Help "Help"
+            $Result = $true
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $true
+        $Answer | Should -BeExactly "answer"
+    }
+
+    It $global:TestLocalizedData.Question.QuestionNoChoice {
+        Mock -CommandName Read-Host -ModuleName $ModuleName -MockWith { Get-Random @("answer", "?") }
+        try
+        {
+            $Answer = Show-Question -Question "Question?" -Help "Help"
             $Result = $true
         }
         catch { $Result = $false }
