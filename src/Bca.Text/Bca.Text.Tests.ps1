@@ -367,4 +367,9 @@ Describe $global:TestLocalizedData.Format.Describe {
         $Result | Should -Be $true
         $String | Should -BeExactly "  $CenterString  "
     }
+
+    It "Fails" {
+        $result = $false
+        $Result | Should -Be $true
+    }
 }
