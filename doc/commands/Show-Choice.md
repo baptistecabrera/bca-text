@@ -1,0 +1,110 @@
+# Show-Choice
+
+Type: Function
+
+Module: [Bca.Text](../ReadMe.md)
+
+Shows choices.
+## Description
+Shows choices to the console and returns the answer.
+## Syntax
+```powershell
+Show-Choice [-Choice] <string[]> [[-Prompt] <string>] [[-Default] <int>] [[-Help] <string>] [[-Width] <int>] [[-PaddingLeft] <int>] [[-PaddingRight] <int>] [<CommonParameters>]
+```
+## Examples
+### Example 1
+```powershell
+Show-Choice -Choice @( "Yes", "No" )
+```
+This example will show the choices and returns the choice selected.
+### Example 2
+```powershell
+Show-Choice -Choice @( "Yes", "No" ) -Default 0 -Prompt "Your answer"
+```
+This example will show the choices with default being "Yes" and prompt "Your answer", and returns the choice selected.
+## Parameters
+### `-Choice`
+A string array containing the possible choices.
+
+| | |
+|:-|:-|
+|Type:|String[]|
+|Position:|0|
+|Required:|True|
+|Accepts pipepline input:|False|
+
+### `-Prompt`
+A string containing the prompt to show.
+
+| | |
+|:-|:-|
+|Type:|String|
+|Position:|1|
+|Required:|False|
+|Accepts pipepline input:|False|
+
+### `-Default`
+An integer containing the index of the default choice.
+
+| | |
+|:-|:-|
+|Type:|Int32|
+|Default value:|`-1`|
+|Position:|2|
+|Required:|False|
+|Accepts pipepline input:|False|
+
+### `-Help`
+A string containing a help message.
+
+| | |
+|:-|:-|
+|Type:|String|
+|Position:|3|
+|Required:|False|
+|Accepts pipepline input:|False|
+
+### `-Width`
+An integer specifying the width of the message.
+
+| | |
+|:-|:-|
+|Type:|Int32|
+|Default value:|`0`|
+|Position:|4|
+|Required:|False|
+|Accepts pipepline input:|False|
+
+### `-PaddingLeft`
+An integer specifying the left padding of the message.
+
+| | |
+|:-|:-|
+|Type:|Int32|
+|Default value:|`0`|
+|Position:|5|
+|Required:|False|
+|Accepts pipepline input:|False|
+
+### `-PaddingRight`
+An integer specifying the right padding of the message.
+
+| | |
+|:-|:-|
+|Type:|Int32|
+|Default value:|`0`|
+|Position:|6|
+|Required:|False|
+|Accepts pipepline input:|False|
+
+### `-<CommonParameters>`
+This command supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
+## Outputs
+
+**System.Int32**
+
+Returns an integer containing the index of the choice selected.
+## Related Links
+- [Show-Message](Show-Message.md)
+- [Show-Question](Show-Question.md)
