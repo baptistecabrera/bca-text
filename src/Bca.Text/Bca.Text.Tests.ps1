@@ -278,12 +278,13 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
         $Object2 = New-Object -TypeName PsObject -Property $Hash2
         $IntArray = @( 300, 123, 124 )
         $StringArray = @( "125", "300", "124" )
+        $Float = 1.3
     }
 
     It $global:TestLocalizedData.ConvertTest.Color {
         try
         {
-            $ResultColor = $Color | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $Color | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -293,7 +294,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.String {
         try
         {
-            $ResultColor = $String | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $String | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -303,7 +304,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.Hex {
         try
         {
-            $ResultColor = $Hex | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $Hex | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -313,7 +314,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.Hex2 {
         try
         {
-            $ResultColor = $Hex2 | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $Hex2 | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -323,7 +324,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.Hash {
         try
         {
-            $ResultColor = $Hash | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $Hash | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -333,7 +334,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.Hash {
         try
         {
-            $ResultColor = $Hash2 | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $Hash2 | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -343,7 +344,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.Object {
         try
         {
-            $ResultColor = $Object | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $Object | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -353,7 +354,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.Object {
         try
         {
-            $ResultColor = $Object2 | ConvertTo-Color -ErrorActionStop
+            $ResultColor = $Object2 | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -363,7 +364,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.IntArray {
         try
         {
-            $Result = ConvertTo-Color -Color $IntArray -ErrorActionStop
+            $Result = ConvertTo-Color -Color $IntArray -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -373,7 +374,17 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeConvert {
     It $global:TestLocalizedData.ConvertTest.StringArray {
         try
         {
-            $Result = ConvertTo-Color -Color $StringArray -ErrorActionStop
+            $Result = ConvertTo-Color -Color $StringArray -ErrorAction Stop
+            $Result = $true
+        }
+        catch { $Result = $false }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Float {
+        try
+        {
+            $ResultColor = $Float | ConvertTo-Color -ErrorAction Stop
             $Result = $true
         }
         catch { $Result = $false }
@@ -480,12 +491,13 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
         $Object2 = New-Object -TypeName PsObject -Property $Hash2
         $IntArray = @( 300, 123, 124 )
         $StringArray = @( "125", "300", "124" )
+        $Float = 1.3
     }
 
     It $global:TestLocalizedData.ConvertTest.Color {
         try
         {
-            $Result = $Color | Test-Color -ErrorActionStop
+            $Result = $Color | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -494,7 +506,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.String {
         try
         {
-            $Result = $String | Test-Color -ErrorActionStop
+            $Result = $String | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -503,7 +515,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.Hex {
         try
         {
-            $Result = $Hex | Test-Color -ErrorActionStop
+            $Result = $Hex | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -512,7 +524,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.Hex2 {
         try
         {
-            $Result = $Hex2 | Test-Color -ErrorActionStop
+            $Result = $Hex2 | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -521,7 +533,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.Hash {
         try
         {
-            $Result = $Hash | Test-Color -ErrorActionStop
+            $Result = $Hash | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -530,7 +542,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.Hash {
         try
         {
-            $Result = $Hash2 | Test-Color -ErrorActionStop
+            $Result = $Hash2 | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -539,7 +551,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.Object {
         try
         {
-            $Result = $Object | Test-Color -ErrorActionStop
+            $Result = $Object | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -548,7 +560,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.Object {
         try
         {
-            $Result = $Object2 | Test-Color -ErrorActionStop
+            $Result = $Object2 | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -557,7 +569,7 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.IntArray {
         try
         {
-            $Result = Test-Color -Color $IntArray -ErrorActionStop
+            $Result = Test-Color -Color $IntArray -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false
@@ -566,7 +578,16 @@ Describe $global:TestLocalizedData.ConvertTest.DescribeTest {
     It $global:TestLocalizedData.ConvertTest.StringArray {
         try
         {
-            $Result = Test-Color -Color $StringArray -ErrorActionStop
+            $Result = Test-Color -Color $StringArray -ErrorAction Stop
+        }
+        catch { $Result = $true }
+        $Result | Should -Be $false
+    }
+
+    It $global:TestLocalizedData.ConvertTest.Float {
+        try
+        {
+            $Result = $Float | Test-Color -ErrorAction Stop
         }
         catch { $Result = $true }
         $Result | Should -Be $false

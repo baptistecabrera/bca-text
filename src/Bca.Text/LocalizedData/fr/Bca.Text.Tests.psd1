@@ -28,6 +28,7 @@
         Object          = "Depuis Object"
         IntArray        = "Depuis Int array"
         StringArray     = "Depuis String array"
+        Float           = "Depuis Float"
     }
 
     Format      = @{

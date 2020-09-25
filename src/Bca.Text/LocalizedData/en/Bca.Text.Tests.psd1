@@ -28,6 +28,7 @@
         Object          = "From Object"
         IntArray        = "From Int array"
         StringArray     = "From String array"
+        Float           = "From Float"
     }
 
     Format      = @{
